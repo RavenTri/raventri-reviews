@@ -1,0 +1,15 @@
+body{
+    background-color: bisque;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#core{
+    width:66%;
+    background-color: bisque;
+}
+@media screen and (max-width: 780px) {
+    #core{
+        width:95%;
+    }
+}

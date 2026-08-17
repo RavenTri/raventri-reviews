@@ -1,0 +1,107 @@
+#nav{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    border-top:1px solid black;
+    border-bottom: 1px solid black;
+    background-color: azure;
+    height:fit-content;
+    position:sticky;
+    top:0;
+}
+#logoElems a{
+    height:90%;
+}
+#logoElems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:10%;
+    padding-right:10%;
+}
+#siteLogo{
+    height:3rem;
+}
+#navElems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:70%;
+    padding-left:10%;
+    padding-right:10%;
+}
+.navElem:link, .navElem:active, .navElem:hover, .navElem:visited{
+    font-size:2rem;
+    margin:0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.navElem:link, .navElem:visited{
+    color:blue;
+}
+.navElem:hover{
+    color:red;
+}
+.navElem:active{
+    color:purple;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  flex-direction:column;
+}
+
+/*Footer*/
+#footer{
+    display:flex;
+    justify-content: space-around;
+    border-top:1px solid black;
+    border-bottom: 1px solid black;
+    width:100%;
+    margin-top:20px;
+    background-color: azure;
+}
+.footerItem{
+    font-weight: bold;
+}
+.footerItem a:link, .footerItem a:active, .footerItem a:hover, .footerItem a:visited{
+    font-weight: bold;
+    text-decoration: none;
+}
+.footerItem a:link, .footerItem a:visited{
+    color:blue;
+}
+.footerItem a:hover{
+    color:red;
+}
+.footerItem a:active{
+    color:purple;
+}
+@media screen and (max-width: 780px) {
+    #nav{
+        flex-wrap: wrap;
+    }
+    .navElem:link, .navElem:active, .navElem:hover, .navElem:visited{
+        font-size:1.5rem;
+    }
+    .dropdown{
+        display:none;
+        position:relative;
+    }
+    #ddElemsWrapper{
+        position:absolute;
+    }
+    #ddElems{
+        position:relative;
+        right:4rem;
+    }
+    #footer{
+        flex-wrap: wrap;
+    }
+}

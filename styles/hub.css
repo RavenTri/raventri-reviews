@@ -1,0 +1,130 @@
+/*hub pages*/
+#intro{
+    font-size:1.5rem;
+    background-color:antiquewhite;
+    text-align: justify;
+    padding:5px;
+}
+#intro p{
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
+    margin:0;
+}
+.thumbnail{
+    text-decoration: none;
+    color:black;
+}
+.review, .headline{
+    background-color: lightsalmon;
+    padding:1rem;
+    margin:0.5rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow:0px 5px 5px;
+}
+.review:hover, .headline:hover{
+    box-shadow:0px 8px 8px;
+}
+.review:active, .headline:active{
+    box-shadow:none;
+}
+.headline{
+    font-size:1.5em;
+}
+/*.headline img{
+    max-width:100%;
+}*/
+.reviewimg{
+    width:12rem;
+    height:12rem;    
+}
+.headline .reviewimg{
+    width:18rem;
+    height:18rem;
+}
+.headline .reviewtitle{
+    font-size:4.5rem;
+}
+.headline .reviewtext{
+    font-size:1.875rem;
+}
+.reviewalltext{
+    display:flex;
+    flex-direction: column;
+    width:67%;
+}
+.reviewimgdiv{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:33%;
+}
+.reviewtype{
+    margin:0;
+}
+.medType, .series{
+    display:inline;
+}
+.medType{
+    text-decoration: underline;
+    text-decoration-thickness: 0.25em;
+    text-decoration-color: red;
+}
+.series{
+    text-decoration: underline;
+    text-decoration-thickness: 0.25em;
+    text-decoration-color: blue;
+}
+.reviewtitle{
+    font-size:3rem;
+    margin:0.25rem;
+}
+.reviewdate{
+    margin:0;
+}
+.reviewtext{
+    font-size:1.25rem;
+    margin-bottom:0;
+}
+h1{
+    text-align: center;
+}
+.seriesHub{
+    text-align: center;
+    flex-direction:column;
+    justify-content: center;
+}
+@media screen and (max-width: 780px) {
+    p{
+        font-size:1rem;
+    }
+    .review, .headline{
+        flex-direction: column;
+    }
+    .headline .reviewtext{
+        font-size:1.25rem;
+    }
+    .headline img{
+        max-width: auto;
+    }
+    .reviewalltext{
+        width:100%;
+    }
+    .reviewimgdiv{
+        width:100%;
+    }
+}
+@media screen and (max-width:350px){
+    .headline .reviewimg{
+        width:12rem;
+        height:12rem;
+    }
+}
+@media screen and (min-width:780px) and (max-width:1200px){
+    .headline .reviewimg{
+        width:12rem;
+        height:12rem;
+    }
+}
