@@ -26,24 +26,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:70%;
+    width:100%;
     padding-left:10%;
     padding-right:10%;
 }
-.navElem:link, .navElem:active, .navElem:hover, .navElem:visited{
+.navElem:link, .navElem:active, .navElem:hover, .navElem:visited, #hubDropper{
     font-size:2rem;
     margin:0.5rem;
     font-weight: bold;
     text-decoration: none;
 }
-.navElem:link, .navElem:visited{
+.navElem:link, .navElem:visited, #hubDropper{
     color:blue;
 }
-.navElem:hover{
+.navElem:hover, #hubDropper:hover{
     color:red;
 }
-.navElem:active{
+.navElem:active, #hubDropper:active{
     color:purple;
+}
+#hubDropper{
+    visibility:hidden;
+    display:none;
+}
+.dropper{
+    visibility:visible;
+    display:inline;
+}
+
+#ddElems, #dropperWrapper{
+    position:relative;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction:row;
+    width:100%;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -83,6 +102,8 @@
 .footerItem a:active{
     color:purple;
 }
+
+/*mobile version*/
 @media screen and (max-width: 780px) {
     #nav{
         flex-wrap: wrap;
@@ -90,16 +111,43 @@
     .navElem:link, .navElem:active, .navElem:hover, .navElem:visited{
         font-size:1.5rem;
     }
+    #ddElems{
+        display:flex;
+        flex-direction: column;
+        justify-content: right;
+        min-width:160px;
+    }
+    #hubDropper{
+        visibility:visible;
+        display:block;
+    }
+    #dropperWrapper{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        position:absolute;
+        margin-top:3rem;
+    }
+    #moviesDropper, #tvDropper, #seriesDropper{
+        display:none;
+        flex-direction: column;
+        background-color: #f1f1f1;
+    }
+    .dropper, .dropper:link, .dropper:hover, .dropper:active{
+        min-width: 160px;
+        box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.2);
+        z-index:2;
+        padding-top:0.25rem;
+        padding-bottom:0.25rem;
+        margin: 0px;
+    }
     .dropdown{
         display:none;
-        position:relative;
+        position:static;
+        box-shadow: none;
     }
-    #ddElemsWrapper{
+    #searchDrop{
         position:absolute;
-    }
-    #ddElems{
-        position:relative;
-        right:4rem;
     }
     #footer{
         flex-wrap: wrap;

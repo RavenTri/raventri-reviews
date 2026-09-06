@@ -10,6 +10,16 @@
     padding-bottom:0.75rem;
     margin:0;
 }
+#sortDiv{
+    display:flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    font-size:1.3rem;
+}
+#sort{
+    margin-left:0.75rem;
+    font-size:1rem;
+}
 .thumbnail{
     text-decoration: none;
     color:black;
@@ -99,6 +109,13 @@ h1{
 @media screen and (max-width: 780px) {
     p{
         font-size:1rem;
+    }
+    #sortDiv{
+        font-size:1rem;
+    }
+    #sort{
+        margin-left:0.5rem;
+        font-size:0.75rem;
     }
     .review, .headline{
         flex-direction: column;
