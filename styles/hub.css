@@ -106,7 +106,7 @@ h1{
     flex-direction:column;
     justify-content: center;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 940px) {
     p{
         font-size:1rem;
     }
@@ -139,7 +139,7 @@ h1{
         height:12rem;
     }
 }
-@media screen and (min-width:780px) and (max-width:1200px){
+@media screen and (min-width:940px) and (max-width:1460px){
     .headline .reviewimg{
         width:12rem;
         height:12rem;

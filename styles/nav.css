@@ -104,7 +104,7 @@
 }
 
 /*mobile version*/
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 940px) {
     #nav{
         flex-wrap: wrap;
     }
@@ -132,6 +132,8 @@
         display:none;
         flex-direction: column;
         background-color: #f1f1f1;
+        text-indent:5px;
+        max-width:160px;
     }
     .dropper, .dropper:link, .dropper:hover, .dropper:active{
         min-width: 160px;

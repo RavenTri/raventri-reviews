@@ -29,8 +29,8 @@ function createNav(){
                     <div id="tvDropper"><a href="../hubs/tv.html" class="navElem dropper">TV ↓</a>${tvDropdown}</div>
                     <div id="seriesDropper"><a href="../hubs/series.html" class="navElem dropper">Series ↓</a>${seriesDropdown}</div>
                 </div>
+                <div id="searchElems"></div>
             </div>
-            <div id="searchElems"></div>
         </div>`;
 
     //set up js events
@@ -97,7 +97,7 @@ function createNav(){
             /*for(let i = 0; i < dds.length; i+=1){
                 dds[i].style.display = "none";
             }*/
-           moviesDropper.style.display = "none";
+            moviesDropper.style.display = "none";
             tvDropper.style.display = "none";
             seriesDropper.style.display = "none";
             moviesDrop.style.display = "none";
@@ -105,6 +105,16 @@ function createNav(){
             seriesDrop.style.display = "none";
             hubDropped = false;
         }
+    }
+
+    window.onresize = () => {
+        moviesDropper.style.display = "";
+        tvDropper.style.display = "";
+        seriesDropper.style.display = "";
+        moviesDrop.style.display = "";
+        tvDrop.style.display = "";
+        seriesDrop.style.display = "";
+        hubDropped = false;
     }
 
     //mobile
@@ -220,6 +230,11 @@ function createSearch(data){
     </div>`;
     nav.innerHTML += searchBar;
     document.querySelector("#search").addEventListener("input", function(){searchReviews(data);});
+    document.querySelector("#search").addEventListener("focus", function(){searchReviews(data);});
+    document.querySelector("#search").addEventListener("focusout", function(){
+        document.querySelector("#searchDrop").innerHTML = "";
+        document.querySelector("#searchDrop").style.display = "none";
+    });
 }
 
 function searchReviews(data){

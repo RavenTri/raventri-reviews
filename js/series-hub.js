@@ -1,4 +1,4 @@
-import { createNav, createFooter, formatLink } from "./main.js";
+import { createNav, createFooter, createSearch, formatLink } from "./main.js";
 
 window.onload = function(){
     document.querySelector("body").innerHTML += `        
@@ -35,6 +35,7 @@ window.onload = function(){
         for(let i = 0; i < series.length; i++){
             document.querySelector("#reviews").innerHTML += createThumbnail(series[i], formatLink(series[i]));
         }
+        createSearch(Object.values(dataObj));
     };
     //send the request
     xmlhttp.open("GET", "../test-reviews.json");

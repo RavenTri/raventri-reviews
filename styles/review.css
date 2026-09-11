@@ -82,7 +82,7 @@
     margin-top:10px;
     margin-bottom:10px;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 940px) {
     #headertext{
         width:50%;
     }
