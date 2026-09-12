@@ -231,9 +231,23 @@ function createSearch(data){
     nav.innerHTML += searchBar;
     document.querySelector("#search").addEventListener("input", function(){searchReviews(data);});
     document.querySelector("#search").addEventListener("focus", function(){searchReviews(data);});
-    document.querySelector("#search").addEventListener("focusout", function(){
-        document.querySelector("#searchDrop").innerHTML = "";
-        document.querySelector("#searchDrop").style.display = "none";
+    document.querySelector("#core").addEventListener("click", function(){
+        /*let clickedLink = false;
+        let elems = document.querySelectorAll("#searchDrop>a");
+        for(let i = 0; i < elems.length; i++){
+            elems[i].onmousehover = () => {
+                clickedLink = true;
+            }
+        }
+        console.log(clickedLink);
+
+        if(!clickedLink){
+            document.querySelector("#searchDrop").innerHTML = "";
+            document.querySelector("#searchDrop").style.display = "none";
+        }*/
+            document.querySelector("#searchDrop").innerHTML = "";
+            document.querySelector("#searchDrop").style.display = "none";
+        
     });
 }
 
