@@ -1,4 +1,4 @@
-import {createNav, createFooter, formatLink} from "../js/main.js";
+import {createNav, createFooter, createSearch, formatLink} from "../js/main.js";
 
 "use strict";
 
@@ -37,9 +37,11 @@ window.onload = () => {
     //once the json is received, organize the data and populate the divs
     xmlhttp.onload = function() {
         //gets the reviews array from our json file
-        let cur = JSON.parse(this.responseText).reviews[title];
+        let dataObj = JSON.parse(this.responseText).reviews;
+        let cur = dataObj[title];
         createReview(cur.title, cur.release, cur.date, cur.img, cur.medType, cur.series, cur.review);
         createReviewScore(cur.score);
+        createSearch(Object.values(dataObj));
     };
     //send the request
     xmlhttp.open("GET", "../test-reviews.json");

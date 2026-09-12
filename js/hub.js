@@ -1,4 +1,4 @@
-import {createNav, createFooter, formatLink} from "./main.js";
+import {createNav, createFooter, createSearch, formatLink} from "./main.js";
 "use strict";
 
 let dataObj;
@@ -51,6 +51,7 @@ function onload(sort){
     //create the header and footer while the data loads
     createNav();
     createFooter();
+    createSort();
     //send out a request for json
     const xmlhttp = new XMLHttpRequest();
     //once the json is received, organize the data and populate the divs
@@ -90,6 +91,7 @@ function onload(sort){
         selected.sort(sort);
         //populate the core of the page
         populateReviews(selected);
+        createSearch(data);
     };
     //send the request
     xmlhttp.open("GET", "../test-reviews.json");
@@ -104,26 +106,11 @@ function select(type){
     }
 }
 
-//sorts data by date (newest to oldest)
-//for array.sort method
-function sortByNewestReview(objA, objB){
-    let a = Date.parse(objA.date);
-    let b = Date.parse(objB.date);
-    if (a < b){
-        return 1;
-    }
-    else if (a > b){
-        return -1;
-    }
-    else{
-        return 0;
-    }
-}
-
 //gets the specified div from the doc and populates it with the data
 function populateReviews(data){
     //get the div to populate
     let reviewDiv = document.querySelector("#reviews");
+    reviewDiv.innerHTML = "";
     //populate the div with the data
     for(let i = 1; i < data.length; i++){
         reviewDiv.innerHTML += createThumbnail(data[i].title, data[i].release, data[i].date, data[i].blurb, formatLink(data[i].title), data[i].medType, data[i].series, "review");
@@ -131,6 +118,7 @@ function populateReviews(data){
 
     //populate the headline with the newest review
     let featureDiv = document.querySelector("#headline");
+    featureDiv.innerHTML = "";
     featureDiv.innerHTML += createThumbnail(data[0].title, data[0].release, data[0].date, data[0].blurb, formatLink(data[0].title), data[0].medType, data[0].series, "headline");
     document.querySelector(".headline").onclick = function(){
         return 0;
@@ -157,6 +145,161 @@ function createThumbnail(title, release, date, text, img, medType, series, revTy
     let imgHTML = `<div class="reviewimgdiv"><img class="reviewimg" src="../images/${img}.png" alt="${title} thumbnail."></img></div>`;
     //return the thumbnail to be used in the html div 
     return `<a href="../reviews/${formatLink(title)}.html" class="thumbnail"><div class="${revType}"><div class="reviewalltext">${typeHTML}${titleHTML}${dateHTML}${textHTML}</div>${imgHTML}</div></a>`;
+}
+
+//creates the search system
+function createSort(){
+    let intro = document.querySelector("#intro");
+    let sort = `<div id="sortDiv">
+        <label for="sort">Sort By: </label>
+        <select name="sort" id="sort">
+            <option value="newestReview">Review Date (Newest -> Oldest)</option>
+            <option value="oldestReview">Review Date (Oldest -> Newest)</option>
+            <option value="newestRelease">Release Date (Newest -> Oldest)</option>
+            <option value="oldestRelease">Release Date (Oldest -> Newest)</option>
+            <option value="titleAZ">Title (A -> Z)</option>
+            <option value="titleZA">Title (Z -> A)</option>
+            <option value="highestScore">Review Score (Highest -> Lowest)</option>
+            <option value="lowestScore">Review Score (Lowest -> Highest)</option>
+        </select>
+    </dive>`;
+    intro.innerHTML += sort;
+    document.querySelector("#sort").addEventListener("change", sortReviews);
+}
+
+//sorts the reviews
+function sortReviews(){
+    let sorts = {
+        "newestReview": sortByNewestReview,
+        "oldestReview": sortByOldestReview,
+        "newestRelease": sortByNewestRelease,
+        "oldestRelease": sortByOldestRelease,
+        "titleAZ": sortByAZ,
+        "titleZA": sortByZA,
+        "highestScore": sortByHighestScore,
+        "lowestScore": sortByLowestScore,
+    };
+
+    console.log("sort");
+    selected.sort(sorts[document.querySelector("#sort").value]);
+    populateReviews(selected);
+}
+
+
+
+//SORTING FUNCTIONS
+//sorts data by date (newest to oldest)
+//for array.sort method
+function sortByNewestReview(objA, objB){
+    let a = Date.parse(objA.date);
+    let b = Date.parse(objB.date);
+    if (a < b){
+        return 1;
+    }
+    else if (a > b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByOldestReview(objA, objB){
+    let a = Date.parse(objA.date);
+    let b = Date.parse(objB.date);
+    if (a > b){
+        return 1;
+    }
+    else if (a < b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByAZ(objA, objB){
+    let a = objA.title;
+    let b = objB.title;
+    if (a > b){
+        return 1;
+    }
+    else if (a < b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByZA(objA, objB){
+    let a = objA.title;
+    let b = objB.title;
+    if (a < b){
+        return 1;
+    }
+    else if (a > b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByNewestRelease(objA, objB){
+    let a = parseInt(objA.release);
+    let b = parseInt(objB.release);
+    if (a < b){
+        return 1;
+    }
+    else if (a > b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByOldestRelease(objA, objB){
+    let a = parseInt(objA.release);
+    let b = parseInt(objB.release);
+    if (a > b){
+        return 1;
+    }
+    else if (a < b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByHighestScore(objA, objB){
+    let a = parseFloat(objA.score);
+    let b = parseFloat(objB.score);
+    if (a < b){
+        return 1;
+    }
+    else if (a > b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function sortByLowestScore(objA, objB){
+    let a = parseFloat(objA.score);
+    let b = parseFloat(objB.score);
+    if (a > b){
+        return 1;
+    }
+    else if (a < b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
 }
 
 export {onload};

@@ -8,7 +8,7 @@ body{
     width:66%;
     background-color: bisque;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1024px) {
     #core{
         width:95%;
     }
