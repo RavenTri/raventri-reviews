@@ -63,10 +63,6 @@ function createNav(){
     document.querySelector("#hubDropper").onclick = function(event){
         let dds = document.querySelectorAll(".hubDrop");
         if (!hubDropped){
-            
-            /*for(let i = 0; i < dds.length; i+=1){
-                dds[i].style.display = "flex";
-            }*/
             moviesDropper.style.display = "flex";
             tvDropper.style.display = "flex";
             seriesDropper.style.display = "flex";
@@ -77,9 +73,6 @@ function createNav(){
             event.preventDefault();
         }
         else{
-            /*for(let i = 0; i < dds.length; i+=1){
-                dds[i].style.display = "none";
-            }*/
             moviesDropper.style.display = "none";
             tvDropper.style.display = "none";
             seriesDropper.style.display = "none";
@@ -94,9 +87,6 @@ function createNav(){
     document.querySelector("#core").onclick = function(){
         let dds = document.querySelectorAll(".hubDrop");
         if (hubDropped){
-            /*for(let i = 0; i < dds.length; i+=1){
-                dds[i].style.display = "none";
-            }*/
             moviesDropper.style.display = "none";
             tvDropper.style.display = "none";
             seriesDropper.style.display = "none";
@@ -117,85 +107,6 @@ function createNav(){
         hubDropped = false;
     }
 
-    //mobile
-    /*
-    let hubDropped = false;
-    if(window.matchMedia("(max-width:780px)").matches){
-        nav.innerHTML = `${logo}
-        <div id="hubsDrop"><a href="./index.html" id="hubText" class="navElem">HUBS ↓</a>
-            <div id="ddElemsWrapper">
-                <div id="ddElems" class="dropdown">
-                        <a href="../hubs/movies.html" class="navElem ddElem" >Movies ↓</a>${moviesDropdown}
-                        <a href="../hubs/tv.html" class="navElem ddElem" >TV ↓</a>${tvDropdown}
-                        <a href="../hubs/series.html" class="navElem ddElem">Series ↓</a>${seriesDropdown}
-                </div>
-            </div>
-            <div id="navElems"></div>
-        </div>`;
-
-        document.querySelector("#hubText").onclick = function(event){
-            let dds = document.querySelectorAll(".dropdown");
-            if (!hubDropped){
-                
-                for(let i = 0; i < dds.length; i+=1){
-                    dds[i].style.display = "flex";
-                }
-                hubDropped = true;
-                event.preventDefault();
-            }
-            else{
-                for(let i = 0; i < dds.length; i+=1){
-                    dds[i].style.display = "none";
-                }
-                hubDropped = false;
-                event.preventDefault();
-            }
-        }
-
-        document.querySelector("#core").onclick = function(){
-            let dds = document.querySelectorAll(".dropdown");
-            if (hubDropped){
-                for(let i = 0; i < dds.length; i+=1){
-                    dds[i].style.display = "none";
-                }
-                hubDropped = false;
-            }
-        }
-    }
-    //desktop
-    else{
-        nav.innerHTML = `${logo}
-            <div id="navElems">
-                <div id="moviesDropper"><a href="../hubs/movies.html" class="navElem" >Movies ↓</a>${moviesDropdown}</div>
-                <div id="tvDropper"><a href="../hubs/tv.html" class="navElem" >TV ↓</a>${tvDropdown}</div>
-                <div id="seriesDropper"><a href="../hubs/series.html" class="navElem dropper">Series ↓</a>${seriesDropdown}</div>
-            </div>`;
-
-        let movies = document.querySelector("#moviesDropper");
-        let tv = document.querySelector("#tvDropper");
-        let series = document.querySelector("#seriesDropper");
-
-        movies.onmouseover = function(){
-            document.querySelector("#moviesDrop").style.display = "flex";
-        }
-        movies.onmouseout = function(){
-            document.querySelector("#moviesDrop").style.display = "none";
-        }
-
-        tv.onmouseover = function(){
-            document.querySelector("#tvDrop").style.display = "flex";
-        }
-        tv.onmouseout = function(){
-            document.querySelector("#tvDrop").style.display = "none";
-        }
-
-        series.onmouseover = function(){
-            document.querySelector("#seriesDrop").style.display = "flex";
-        }
-        series.onmouseout = function(){
-            document.querySelector("#seriesDrop").style.display = "none";
-        }
-    }*/
 }
 
 function setDropdownEvent(dropdown, displayType){
@@ -232,22 +143,8 @@ function createSearch(data){
     document.querySelector("#search").addEventListener("input", function(){searchReviews(data);});
     document.querySelector("#search").addEventListener("focus", function(){searchReviews(data);});
     document.querySelector("#core").addEventListener("click", function(){
-        /*let clickedLink = false;
-        let elems = document.querySelectorAll("#searchDrop>a");
-        for(let i = 0; i < elems.length; i++){
-            elems[i].onmousehover = () => {
-                clickedLink = true;
-            }
-        }
-        console.log(clickedLink);
-
-        if(!clickedLink){
-            document.querySelector("#searchDrop").innerHTML = "";
-            document.querySelector("#searchDrop").style.display = "none";
-        }*/
-            document.querySelector("#searchDrop").innerHTML = "";
-            document.querySelector("#searchDrop").style.display = "none";
-        
+        document.querySelector("#searchDrop").innerHTML = "";
+        document.querySelector("#searchDrop").style.display = "none";
     });
 }
 
@@ -276,7 +173,8 @@ function searchReviews(data){
                 sizeLimit = matches.length;
             }
             for(let i = 0; i < sizeLimit; i++){
-                dropdown.innerHTML += `<a href="../reviews/${formatLink(matches[i].title)}.html" class="navElem ddElem">${matches[i].title}</a>`;
+                let title = matches[i].title;
+                dropdown.innerHTML += `<a href="../reviews/${formatLink(title)}.html" class="navElem ddElem"><img src="../images/${formatLink(title)}.png" alt="${title} thumbnail." class="searchImg">${title}</a>`;
             }
         }
         else{

@@ -76,6 +76,16 @@
   flex-direction:column;
 }
 
+#searchDrop{
+    width:15rem;
+}
+
+.searchImg{
+    width:3rem;
+    height:3rem;
+    margin-right:10px;
+}
+
 /*Footer*/
 #footer{
     display:flex;

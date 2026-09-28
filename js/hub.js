@@ -37,9 +37,9 @@ function onload(sort){
             join me for the ride.
         </p>
         <p>
-            Uploads for my Marvel Marathon will continue with Venom (2018) on Sunday, September 27th. 
-            You can also check out my <a href="https://www.tumblr.com/raventri-reviews">Tumblr</a> and 
-            <a href="https://letterboxd.com/RavenTri/">Letterboxd</a> for additional reviews that may not have made it 
+            Uploads for my Marvel Marathon will be every Sunday. 
+            You can also check out my <a href="https://letterboxd.com/RavenTri/">Letterboxd</a> and 
+            <a href="https://www.tumblr.com/raventri-reviews">Tumblr</a> for additional reviews that may not have made it 
             onto the site for one reason or another. Thanks for joining me, and happy readings!
             <br><b>All reviews contain Spoilers!</b>
         </p>
