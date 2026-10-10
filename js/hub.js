@@ -5,6 +5,7 @@ let dataObj;
 let data;
 let selected = [];
 let hubType = document.title.split(" Hub")[0];
+let initialReviewLimit = 15;
 
 //populate the divs when the window loads
 window.onload = () => {
@@ -18,6 +19,9 @@ function onload(sort){
         <div id="intro"></div>
         <div id="headline"></div>
         <div id="reviews"></div>
+        <div id="moreReviewsDiv">
+            <p id="moreReviews" style="display:none">More Reviews</p>
+        </div>
     </div>
     <div id="footer"></div>
     `;
@@ -112,9 +116,32 @@ function populateReviews(data){
     //get the div to populate
     let reviewDiv = document.querySelector("#reviews");
     reviewDiv.innerHTML = "";
+    //set it up so only a certain amount of reviews spawn at once
+    let numReviews = data.length;
+    if (numReviews > initialReviewLimit + 1){
+        numReviews = initialReviewLimit;
+    }
     //populate the div with the data
-    for(let i = 1; i < data.length; i++){
+    for(let i = 1; i < numReviews; i++){
         reviewDiv.innerHTML += createThumbnail(data[i].title, data[i].release, data[i].date, data[i].blurb, formatLink(data[i].title), data[i].medType, data[i].series, "review");
+    }
+
+    //set up the More Reviews button
+    if (numReviews < data.length){
+        let moreReviews = document.querySelector("#moreReviews");
+        moreReviews.style.display = "block";
+        moreReviews.onclick = () => {
+            numReviews += initialReviewLimit;
+            let offset = 0;
+            if(numReviews > data.length){
+                offset = numReviews - data.length;
+                numReviews = data.length;
+                moreReviews.style.display = "none";
+            }
+            for(let i = numReviews - initialReviewLimit + offset; i < numReviews; i++){
+                reviewDiv.innerHTML += createThumbnail(data[i].title, data[i].release, data[i].date, data[i].blurb, formatLink(data[i].title), data[i].medType, data[i].series, "review");
+            }
+        }
     }
 
     //populate the headline with the newest review
@@ -180,8 +207,6 @@ function sortReviews(){
         "highestScore": sortByHighestScore,
         "lowestScore": sortByLowestScore,
     };
-
-    console.log("sort");
     selected.sort(sorts[document.querySelector("#sort").value]);
     populateReviews(selected);
 }
