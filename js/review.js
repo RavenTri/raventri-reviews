@@ -39,9 +39,10 @@ window.onload = () => {
         //gets the reviews array from our json file
         let dataObj = JSON.parse(this.responseText).reviews;
         let cur = dataObj[title];
-        createReview(cur.title, cur.release, cur.date, cur.img, cur.medType, cur.series, cur.review);
+        createReview(cur.title, cur.release, cur.date, cur.medType, cur.series, cur.review);
         createReviewScore(cur.score);
         createSearch(Object.values(dataObj));
+        createDescription(cur.blurb);
     };
     //send the request
     xmlhttp.open("GET", "../test-reviews.json");
@@ -50,7 +51,7 @@ window.onload = () => {
 
 //for the actual review pages
 //will be filled out later
-function createReview(title, release, date, img, medType, series, text){
+function createReview(title, release, date, medType, series, text){
     let header = document.querySelector("#header");
     header.innerHTML = createReviewHeader(title, release, date, formatLink(title), medType, series);
     
@@ -75,12 +76,22 @@ function createReviewHeader(title, release, date, img, medType, series){
 }
 
 function createReviewScore(scoreNum){
-    //let score = document.querySelector("#score");
     let score = `<div id="score">
     <p id="scoreNum">${scoreNum}<span style="font-size:1rem;">/10</span></p>
     <p id="scoreText">${scoreText[Math.trunc(scoreNum)-1]}</p>
     </div>
     `;
     document.querySelector("#review").innerHTML += score;
-    //scoreText text will be replaced with text attached to the score via an array or dict
+}
+
+function createDescription(desc){
+    let metas = document.querySelectorAll("meta");
+    for(let i = 0; i < metas.length; i++){
+        if(metas[i].name == "description"){
+            metas[i].content = desc;
+            return 0;
+        }
+    }
+    let head = document.querySelector("head");
+    head.innerHTML += `<meta name="description" content="${desc}">`;
 }
