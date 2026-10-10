@@ -28,11 +28,12 @@ function onload(sort){
             Hello and welcome to Raven Tri Reviews! As an avid enjoyer of all things fiction from movies to games to comics, I decided to start my own review 
             blog to share my experiences with all of you. 
         </p>
-        <p>My current project is a <a href="./marvel-movies.html">Marvel Marathon,</a> watching every Marvel movie before 
-            they start concluding their Multiverse Saga with Avengers: Secret Wars next December. And I do mean every Marvel 
+        <p>My current project is a <a href="./marvel-movies.html">Marvel Marathon,</a> watching every Marvel movie and Disney+ show before 
+            they conclude their Multiverse Saga with Avengers: Secret Wars next December. And I do mean every Marvel 
             movie, starting with 1998's Blade (see the full list 
             <a href="https://docs.google.com/spreadsheets/d/1KloVhC4sq42WFlLswKACAA2ge_vjNu8tzacP42z5NNM/edit?usp=sharing">here</a>, 
-            with an updated order for the Multiverse Saga). I've seen many 
+            with an updated order for the Multiverse Saga). The Multiverse Saga especially is not in release order, as I'm trying to watch in a way 
+            that feels cohesive narratively. I've seen many 
             of these movies before, but not for a long time, so I think this will be a lot of fun, and I hope you'll 
             join me for the ride.
         </p>
