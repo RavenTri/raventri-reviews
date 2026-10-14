@@ -103,6 +103,25 @@ h1{
     flex-direction:column;
     justify-content: center;
 }
+#moreReviewsDiv{
+    display:flex;
+    justify-content: center;
+}
+#moreReviews, #moreReviews:active, #moreReviews:hover, #moreReviews:visited{
+    font-size:2rem;
+    margin:0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+#moreReviews, #moreReviews:visited{
+    color:blue;
+}
+#moreReviews:hover{
+    color:red;
+}
+#moreReviews:active{
+    color:purple;
+}
 @media screen and (max-width: 940px) {
     p{
         font-size:1rem;
